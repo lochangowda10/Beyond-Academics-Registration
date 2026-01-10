@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Academics | CSE Cluster</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <style>
+        /* --- MODERN VARIABLES --- */
+        :root {
+            --bg-color: #0f172a;       /* Deep Slate Blue */
+            --card-bg: rgba(30, 41, 59, 0.7); /* Glassy Blue */
+            --text-primary: #f8fafc;   /* Almost White */
+            --text-secondary: #94a3b8; /* Muted Blue-Gray */
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); /* Indigo to Purple */
+            --button-hover: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND GLOW EFFECT --- */
+        .glow-orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            
+            /* Gradient Text Settings */
+            background: linear-gradient(to right, #fff, #94a3b8);
+            
+            /* The Fix: Add standard background-clip below the webkit one */
+            -webkit-background-clip: text;
+            background-clip: text; 
+            
+            /* Make text transparent so the gradient shows through */
+            -webkit-text-fill-color: transparent;
+            color: transparent; 
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* --- CARDS & GLASSMORPHISM --- */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        /* --- TEAM GRID --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .member-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid rgba(99, 102, 241, 0.5);
+        }
+
+        .member-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .member-role {
+            font-size: 0.85rem;
+            color: #818cf8; /* Indigo */
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- CTA BUTTON --- */
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn:hover {
+            background: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.6);
+        }
+
+        .note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-orb"></div>
+
+    <div class="container">
+        
+        <header>
+            <div class="badge">1st Year Students Only</div>
+            <h1>Beyond Academics</h1>
+            <p class="subtitle">The exclusive peer-to-peer coding community for the CSE Cluster. No teachers. Just logic.</p>
+        </header>
+
+        <div class="glass-card">
+            <h2>Our Philosophy</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div>
+                    <h3 style="color: #fff; margin-bottom: 10px;">🚫 Not a Classroom</h3>
+                    <p style="color: var(--text-secondary);">We don't lecture. We meet weekly to solve hard problems, debate algorithms on whiteboards, and review code together.</p>
+                </div>
+                <div>
+                    <h3 style="color: #fff; margin-bottom: 10px;">✅ Output Focused</h3>
+                    <p style="color: var(--text-secondary);">Don't just watch tutorials. We build tools, solve LeetCode hards, and prepare for high-level placements from Day 1.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2>The Core Team</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">We are learners just like you.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="app1.jpeg" alt="Member" class="member-photo">
+                    <div class="member-name">Atharva Patil</div>
+                    <div class="member-role">Community Lead</div>
+                </div>
+
+                <div class="team-member">
+                    <img src="lochan.jpeg" alt="Member" class="member-photo">
+                    <div class="member-name">Lochan Gowda T M</div>
+                    <div class="member-role">Tech Lead</div>
+                </div>
+
+                <div class="team-member">
+                    <img src="raj.jpg.jpeg" alt="Member" class="member-photo">
+                    <div class="member-name">Rajendra Patidar</div>
+                    <div class="member-role">Projects Head</div>
+                </div>
+
+                <div class="team-member">
+                    <img src="dev.jpeg" alt="Member" class="member-photo">
+                    <div class="member-name">Devbroto Koiry</div>
+                    <div class="member-role">Outreach Head</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="border:none;">Ready to Join?</h2>
+            <p class="note">⚠️ College ID Card upload required for verification.</p>
+            <br>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMVYkzhM87IRE8dxj1rfMXMdQnFjAYfjZQZqF8EPLrdTRt0A/viewform?usp=header" class="btn" target="_blank">
+                Apply for Batch 1
+            </a>
+            
+            <br><br>
+            <p style="font-size: 0.8rem; opacity: 0.5;">BMS College of Engineering | Dept of AI & DS</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
